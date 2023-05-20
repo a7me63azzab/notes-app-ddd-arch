@@ -72,4 +72,8 @@ class List3<T> extends ValueObject<KtList<T>> {
   int get length {
     return value.getOrElse(() => emptyList()).size;
   }
+
+  bool get isFull {
+    return length == maxLength;
+  }
 }

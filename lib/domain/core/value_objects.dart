@@ -11,11 +11,17 @@ abstract class ValueObject<T> {
 
   T getOrCrash() {
     // id for identity => like -> (success) => success
-    return value.fold(
-        (failure) => throw UnexpectedValueError(failure), id);
+    return value.fold((failure) => throw UnexpectedValueError(failure), id);
   }
 
   bool isValid() => value.isRight();
+
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold(
+      (l) => left(l),
+      (r) => right(unit),
+    );
+  }
 
   @override
   bool operator ==(covariant Object other) {
