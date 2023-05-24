@@ -90,7 +90,7 @@ abstract class TodoItemDTO implements _$TodoItemDTO {
 
   TodoItem toDomain() {
     return TodoItem(
-      id: UniqueId.fromUniqueString(id),
+      id: UniqueId.fromUniqueString(id as String),
       name: TodoName(name),
       done: done,
     );
